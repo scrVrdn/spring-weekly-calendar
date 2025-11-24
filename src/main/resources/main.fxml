@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="io.github.scrvrdn.controller.MainController" styleClass="vbox">
+  <children>
+    <HBox styleClass="hbox">
+      <Label text="Enter a start date" />
+      <DatePicker fx:id="fromDatePicker" styleClass="date-picker" />
+    </HBox>
+    <HBox styleClass="hbox">
+      <Label text="Enter an end date" />
+      <DatePicker fx:id="toDatePicker" styleClass="date-picker"/>
+    </HBox>
+    <Button fx:id="createButton" mnemonicParsing="false" text="Create Calendar" onAction="#handleCreateButton" />
+  </children>
+</VBox>

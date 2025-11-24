@@ -1,0 +1,12 @@
+.hbox
+{
+    -fx-alignment: center;
+    -fx-padding: 0 20 20 20;
+    padding: 0 20 20 20;
+}
+
+.label
+{
+    -fx-padding: 0 10 0 0;
+    padding: 0 10 0 0;
+}
