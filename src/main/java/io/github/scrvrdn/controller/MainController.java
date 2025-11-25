@@ -1,5 +1,7 @@
 package io.github.scrvrdn.controller;
 
+import java.awt.Desktop;
+import java.awt.GraphicsEnvironment;
 import java.io.File;
 import java.time.LocalDate;
 import java.time.chrono.Chronology;
@@ -87,9 +89,15 @@ public class MainController {
                 file = getUniqueFilename(file);
             }
 
+            // create the calendar
             calendarCreator.create(getFromDate(), getToDate(), file.getAbsolutePath());
-            fileChooser.setInitialDirectory(file.getParentFile());
-            fileChooser.showOpenDialog(stage);
+           
+            // open the containing folder
+            if (!GraphicsEnvironment.isHeadless()
+                && Desktop.isDesktopSupported()
+                && Desktop.getDesktop().isSupported(Desktop.Action.OPEN)) {
+                    Desktop.getDesktop().open(file.getParentFile());
+            }
         }
     }
 

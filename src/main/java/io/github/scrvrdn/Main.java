@@ -14,7 +14,9 @@ public class Main extends Application {
 
 	@Override
 	public void init() {
-		appContext = new SpringApplicationBuilder((SpringWeeklyCalendar.class)).run();
+		appContext = new SpringApplicationBuilder((SpringWeeklyCalendar.class))
+			.headless(false)
+			.run();
 	}
 
 	@Override

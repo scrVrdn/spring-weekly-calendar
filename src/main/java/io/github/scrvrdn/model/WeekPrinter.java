@@ -61,7 +61,8 @@ public class WeekPrinter implements PagePrinter {
 
     private LocalDate printDays(PDPageContentStream contentStream, LocalDate from) throws IOException {
         float offset = 28;
-        float newLineOffset = DAYS_FONT_SIZE * 1.2F;
+        float newLineOffset = DAYS_FONT_SIZE * 1.2f;
+        contentStream.setLeading(newLineOffset);
         contentStream.beginText();
         contentStream.newLineAtOffset(X_OFFSET, PDRectangle.A4.getHeight() - offset);
         contentStream.setFont(DAYS_FONT, DAYS_FONT_SIZE);
@@ -69,7 +70,7 @@ public class WeekPrinter implements PagePrinter {
         for (int d = 0; d < NUMBER_OF_DAYS; d++) {
             contentStream.newLineAtOffset(0, -Y_OFFSET + newLineOffset);
             contentStream.showText(from.getDayOfWeek().getDisplayName(TextStyle.FULL, Locale.ENGLISH));
-            contentStream.newLineAtOffset(0, -newLineOffset);
+            contentStream.newLine();
             contentStream.showText(String.valueOf(from.getDayOfMonth()));
             from = from.plusDays(1);
         }
@@ -87,8 +88,9 @@ public class WeekPrinter implements PagePrinter {
         contentStream.showText(month);
         
         if (from.getMonth() != to.getMonth()) {
+            contentStream.setLeading(MONTH_FONT_SIZE * 1.2f);
             contentStream.setNonStrokingColor(java.awt.Color.LIGHT_GRAY);
-            contentStream.newLineAtOffset(0, -MONTH_FONT_SIZE * 1.2F);
+            contentStream.newLine();
             contentStream.showText(to.getMonth().toString());
             contentStream.setNonStrokingColor(java.awt.Color.BLACK);
         }
